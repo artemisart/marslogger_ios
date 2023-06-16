@@ -298,13 +298,10 @@ NSString *const IMU_OUTPUT_FILENAME = @"gyro_accel.csv";
 	}
 	else
 	{
-//#if ! USE_OPENGL_RENDERER // cap the maximum size whether opengl is used or not
-		// When using the CPU renderers or the CoreImage renderer we lower the resolution to 720p so that all devices can maintain real-time performance (this is primarily for A5 based devices like iPhone 4s and iPod Touch 5th Generation).
-		if ( [_captureSession canSetSessionPreset:AVCaptureSessionPreset1280x720] ) {
-			sessionPreset = AVCaptureSessionPreset1280x720;
+		// Support 4K video
+		if ( [_captureSession canSetSessionPreset:AVCaptureSessionPreset3840x2160] ) {
+			sessionPreset = AVCaptureSessionPreset3840x2160;
 		}
-//#endif // ! USE_OPENGL_RENDERER
-
 		frameRate = 30;
 	}
 	
